@@ -1,3 +1,6 @@
+*Note:* This software does not currently work
+
+
 SimpleDotNetPaaS
 ================
 
