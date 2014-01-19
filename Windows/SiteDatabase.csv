@@ -1,4 +1,4 @@
-SiteName,ZipFile,ServerCount,AutoScale,DeployedServers
-"TestSite1","testsite.zip","1","False","DEN1500ASPTEST3"
-"TestSite2","testsite.zip","2","True","DEN1500ASPTEST2 DEN1500ASPTEST1"
-
+﻿#TYPE System.Management.Automation.PSCustomObject
+"SiteName","ZipFile","ServerCount","AutoScale","DeployedServers"
+"TestSite1","testsite.zip","1","False","DEN1500ASPTEST3 DEN1500ASPTEST2 DEN1500ASPTEST1"
+"TestSite2","testsite.zip","2","True","DEN1500ASPTEST2 DEN1500ASPTEST1 DEN1500ASPTEST3"
