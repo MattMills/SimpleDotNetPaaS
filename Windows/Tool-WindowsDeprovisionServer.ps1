@@ -38,7 +38,7 @@ $AppPoolPath = "\\$Server\C$\AppPools"
 
 
 if(! (Test-Path -Path $SitePath) -or !(Test-PAth -Path $AppPoolPath)){
-	Write-Error "Unable to access remove server $server or invalid config"
+	Write-Error "Unable to access remote server $server or invalid config"
 	Exit
 }
 if( !(Test-Path -Path "$SitePath\$SiteName") -or !(Test-Path -Path "$AppPoolPath\$SiteName")){
@@ -64,14 +64,14 @@ Invoke-Command -Session $session {
 		}
 	}
 	
-	Stop-Website "PaaS-$SiteName" -Confirm:$false
+	Stop-Website "PaaS-$SiteName"
 	Remove-Website "PaaS-$SiteName" -Confirm:$false
 	Remove-WebAppPool "PaaS-$SiteName" -Confirm:$false
 	
 	$ComputerName = $ENV:COMPUTERNAME
 	$UserName = "PaaS-$SiteName"
 	$objOu = [ADSI]"WinNT://$ComputerName,Computer"
-	$objOu.Remove("WinNT://$UserName")
+	$objOu.psbase.invoke("Delete", "User", $UserName)
 	
 	#Deploy physical site content
 	$null = Remove-Item -Recurse -Confirm:$false -Force "$LocalSitePath\$SiteName"
