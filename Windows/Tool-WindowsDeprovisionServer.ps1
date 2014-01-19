@@ -77,5 +77,5 @@ Invoke-Command -Session $session {
 	$null = Remove-Item -Recurse -Confirm:$false -Force "$LocalSitePath\$SiteName"
 	$null = Remove-Item -Recurse -Confirm:$false -Force "$LocalAppPoolPath\$SiteName"	
 } -ArgumentList $SiteName, $Server, $LocalSitePath, $LocalAppPoolPath
-
+Remove-PSSession $session
 
