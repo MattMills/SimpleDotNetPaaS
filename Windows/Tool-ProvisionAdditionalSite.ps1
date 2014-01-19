@@ -60,7 +60,11 @@ while($SuccessfulServerList.Count -lt $NewServerCount -and $AttemptedServerList.
 }
 
 $old_csv = Import-Csv -Path SiteDatabase.csv | ? { $_.SiteName -ne $SiteName } 
-$old_csv | Export-Csv -Encoding UTF8 -Path SiteDatabase.csv -NoTypeInformation
+'"SiteName","ZipFile","ServerCount","AutoScale","DeployedServers"' | Out-File -Encoding UTF8 -FilePath SiteDatabase.csv
+if($old_csv -ne $null){
+ 	ConvertTo-Csv -InputObject [array]$old_csv -NoTypeInformation | Select -Skip 1 | Out-file -Append -Encoding UTF8 -FilePath SiteDatabase.csv 
+}
+ 
 """$SiteName"",""$($l.ZipFile)"",""$($l.ServerCount)"",""$($l.AutoScale)"",""$SuccessfulServerList""" | Out-File -Append -Encoding UTF8 -FilePath SiteDatabase.csv
 #if((./Tool-LBProvisionSite.ps1 -SiteName $SiteName) -eq $false){
 #	Write-Error "Unable to provision site"
