@@ -29,6 +29,12 @@ if($AutoScale -and $ServerCount -eq 0){
 	$ServerCount = 1
 }
 
+$l = Import-Csv SiteDatabase.csv
+if(($l | ? {$_.SiteName -eq $SiteName} | Measure).Count -ne 0){
+	Write-Error "Error: $SiteName is already deployed"
+	Exit
+}
+
 $ServerList = [array](Get-Content ServerList.txt)
 $AttemptedServerList = @()
 $SuccessfulServerList = @()
