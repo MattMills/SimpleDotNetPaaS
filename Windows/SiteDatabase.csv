@@ -1,2 +1,3 @@
 ZipFile,ServerName,ServerCount,AutoScale,DeployedServers
-
+"TestSite1","testsite.zip","1","False","DEN1500ASPTEST3"
+"TestSite2","testsite.zip","2","True","DEN1500ASPTEST2 DEN1500ASPTEST1"
