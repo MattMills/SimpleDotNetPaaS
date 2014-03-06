@@ -1,4 +1,4 @@
-*Note:* This software does not currently work
+*Note:* This is alpha quality software.
 
 
 SimpleDotNetPaaS
@@ -7,6 +7,17 @@ SimpleDotNetPaaS
 Simplistic implemenation of a .Net PaaS solution using Powershell and HAProxy
 
 This is currently a proof of concept to investigate the possibility of using Powershell, Bash, IIS and HAProxy (on linux) to build a .Net Platform as a Service offering. 
+
+Current capabilities
+====================
+
+ * Provision and deprovision site on load balancer
+ * Provision and deprovision server->site on load balancer
+ * provision and deprovision site->server from container (Zip File ATM)
+ * provision and deprovision full site (a-z provision, load balancer, all servers, etc)
+ * Scale instance count for site up or down
+ * Autoscale based on CPU load
+
 
 Requirements
 ============
